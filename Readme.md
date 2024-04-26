@@ -24,4 +24,5 @@ Run `node server.js` to start the backend node js server
 Run `npm install` to install all the packages to your local
 Run `npm start` to start the React client.
 
-Th
+The application is hosted on
+`https://aryareactapp.netlify.app/`
