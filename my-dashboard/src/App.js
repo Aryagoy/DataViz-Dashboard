@@ -62,7 +62,7 @@ function App() {
                     data[key] && <ConsumptionChart
                         key={key}
                         data={data[key]}
-                        label={`${key} (${key.slice(key.lastIndexOf(' ') + 1)})`}
+                        label={`${key}`}
                         options={chartOptions}
                     />
                 ))}
