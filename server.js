@@ -18,9 +18,6 @@ async function readExcelData(filePath) {
     firstRow.eachCell({ includeEmpty: true }, function (cell, colNumber) {
 
         if (colNumber > 1 && cell.value) {
-            // console.log(cell.value)
-            // const date = new Date(cell.value);
-            // const monthName = date.toLocaleString('en-US', { month: 'long' });
             months.push(cell.value.getMonth());
         }
     });
