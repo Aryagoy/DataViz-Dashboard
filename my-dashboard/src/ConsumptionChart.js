@@ -1,19 +1,20 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Bar, Line,Scatter } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement } from 'chart.js';
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
     PointElement,
     LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend
 );
 
-const ConsumptionChart = ({ data, label, color }) => {
-    const options = {
+const ConsumptionChart = ({ data, label, options }) => {
+    const chartConfig = {
         responsive: true,
         elements: {
             line: {
@@ -22,7 +23,7 @@ const ConsumptionChart = ({ data, label, color }) => {
             },
             point: {
                 radius: 3,
-                backgroundColor: color || 'rgb(75, 192, 192)'
+                backgroundColor: 'rgb(75, 192, 192)'
             }
         },
         plugins: {
@@ -45,23 +46,23 @@ const ConsumptionChart = ({ data, label, color }) => {
                 font: {
                     size: 16
                 },
-                color: '#666'
+                color: "'#666'"
             }
         },
         scales: {
             x: {
                 display: true,
                 grid: {
-                    display: false
+                    display: options.showAxes,
                 },
                 ticks: {
                     color: 'gray'
                 }
             },
             y: {
-                display: true,
+                display: options.showAxes,
                 grid: {
-                    display: true,
+                    display: options.showAxes,
                     color: '#ddd'
                 },
                 ticks: {
@@ -79,15 +80,17 @@ const ConsumptionChart = ({ data, label, color }) => {
             {
                 label: label,
                 data: Object.values(data),
-                borderColor: color || 'rgb(75, 192, 192)',
-                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                borderColor: options.color,
+                backgroundColor: options.color,
             },
         ],
     };
 
     return (
         <div className="chart-box">
-            <Line options={options} data={chartData} />
+            {options.chartType === 'bar' && <Bar options={chartConfig} data={chartData} />}
+            {options.chartType === 'line' && <Line options={chartConfig} data={chartData} />}
+            {options.chartType === 'scatter' && <Scatter options={chartConfig} data={chartData} />}
         </div>
     );
 }

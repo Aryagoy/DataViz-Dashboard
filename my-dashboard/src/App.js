@@ -1,11 +1,16 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import ConsumptionChart from './ConsumptionChart';
+
+
 function App() {
     const [data, setData] = useState({});
-
+    const [chartOptions, setChartOptions] = useState({
+        chartType: "bar",
+        color: '#FFB6C1',
+        showAxes: true
+    });
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -19,24 +24,43 @@ function App() {
         fetchData();
     }, []);
 
+    const handleColorChange = (event) => {
+        setChartOptions({ ...chartOptions, color: event.target.value });
+    };
+
+    const toggleAxes = () => {
+        setChartOptions({ ...chartOptions, showAxes: !chartOptions.showAxes });
+    };
+
+    const handleChartTypeChange = (event) => {
+        setChartOptions({ ...chartOptions, chartType: event.target.value });
+    };
+
     return (
         <div className="App">
             <h1>Utility and Waste Consumption Charts</h1>
+            <div>
+                <label>Color: <input type="color" value={chartOptions.color} onChange={handleColorChange} /></label>
+                <br></br>
+                <label><input type="checkbox" checked={chartOptions.showAxes} onChange={toggleAxes} /> Show Axes</label>
+                <br></br>
+                <label>Chart Type:
+                    <select value={chartOptions.chartType} onChange={handleChartTypeChange}>
+                        <option value="bar">Bar Chart</option>
+                        <option value="line">Line Chart</option>
+                        <option value="scatter">Scatter Plot</option>
+                    </select>
+                </label>
+            </div>
             <div className="chart-container">
-                {data["Water consumption (m3)"] && Object.keys(data["Water consumption (m3)"]).length > 0 &&
-                    <ConsumptionChart data={data["Water consumption (m3)"]} label="Water Consumption (m3)" />}
-                {data["Natural gas consumption (m3)"] && Object.keys(data["Natural gas consumption (m3)"]).length > 0 &&
-                    <ConsumptionChart data={data["Natural gas consumption (m3)"]} label="Natural gas consumption (m3)" />}
-                {data["Grid Electricity Consumption (KWh)"] && Object.keys(data["Grid Electricity Consumption (KWh)"]).length > 0 &&
-                    <ConsumptionChart data={data["Grid Electricity Consumption (KWh)"]} label="Grid Electricity Consumption (KWh)" />}
-                {data["Steam Consumption (Tons)"] && Object.keys(data["Steam Consumption (Tons)"]).length > 0 &&
-                    <ConsumptionChart data={data["Steam Consumption (Tons)"]} label="Steam Consumption (Tons)" />}
-                {data["Solar KWh"] && Object.keys(data["Solar KWh"]).length > 0 &&
-                    <ConsumptionChart data={data["Solar KWh"]} label="Solar KWh" />}
-                {data["Food waste (Kg)"] && Object.keys(data["Food waste (Kg)"]).length > 0 &&
-                    <ConsumptionChart data={data["Food waste (Kg)"]} label="Food waste (Kg)" />}
-                {data["Water Reycled (m3)"] && Object.keys(data["Water Reycled (m3)"]).length > 0 &&
-                    <ConsumptionChart data={data["Water Reycled (m3)"]} label="Water Reycled (m3)" />}
+                {Object.keys(data).map((key) => (
+                    data[key] && <ConsumptionChart
+                        key={key}
+                        data={data[key]}
+                        label={`${key} (${key.slice(key.lastIndexOf(' ') + 1)})`}
+                        options={chartOptions}
+                    />
+                ))}
             </div>
         </div>)
 }
