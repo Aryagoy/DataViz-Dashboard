@@ -37,7 +37,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className="main-header">Utility and Waste Consumption Charts</h1>
+            <h1 className="main-header">Environmental Metrics of the plant</h1>
             <div className="controls">
                 <div className="control-item">
                     <label>Color: <input type="color" value={chartOptions.color} onChange={handleColorChange} /></label>
