@@ -26,3 +26,6 @@ Run `npm start` to start the React client.
 
 The application is hosted on
 `https://aryareactapp.netlify.app/`
+
+
+![image](https://github.com/Aryagoy/React-app/assets/42674731/8dc8d4b8-d243-42d1-acd4-9ff8d0984189)
