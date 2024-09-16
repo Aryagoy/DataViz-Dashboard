@@ -1,31 +1,58 @@
-#** Running the application **#
+# **DataViz Dashboard**  
 
-Backend
-The backend is built on node js server where it reads the data from excel and then creates a get request for fetch all the data and store in a JSON format.
-In local the backend runs on:
+![image](https://github.com/Aryagoy/React-app/assets/42674731/8dc8d4b8-d243-42d1-acd4-9ff8d0984189)
+**DataViz Dashboard** is a web-based application designed to visualize data dynamically using various chart types. The application consists of a backend server built with Node.js and a frontend created using React. Users can switch between different chart types, customize chart colors, and toggle the visibility of axes for a more interactive experience.
+
+## **Application Overview**
+
+### Backend
+The backend is built with **Node.js**. It reads data from an Excel file and serves it via a RESTful API, converting the data into JSON format. This JSON data can be fetched by the frontend to render visualizations.  
+- The backend runs locally at:
 http://localhost:5001/api/data
 
-
-
-Frontend
-The frontend is built using a simple React app.
-App.js consists of the chart components to render which are defined in ConsumptionChart.js
-Just to make the dashboard responsive, we can change the type of chart in real time and get either bar, line or scatter plot for the data.
-There is an option to change the color of the charts and whether to show axes or not. Multiple functionalities similarly can be built using this.
-In local the backend runs on:
+### Frontend
+The frontend is developed using **React**. The main functionality is in `App.js`, which manages different chart components, including the logic for rendering charts defined in `ConsumptionChart.js`. The dashboard supports real-time changes, allowing users to switch between bar, line, and scatter plots dynamically. Additional features include changing chart colors and toggling the display of axes.
+- The frontend runs locally at:
 http://localhost:3000/
 
 
-Running the application:
-1. Backend 
-Run `node server.js` to start the backend node js server
 
-2. Frontend
-Run `npm install` to install all the packages to your local
-Run `npm start` to start the React client.
+## **Features**
+- Dynamic chart switching: Bar, Line, and Scatter plots.
+- Chart customization: Modify chart colors and toggle axes.
+- Responsive dashboard: Adjust chart type and appearance in real time.
+- Scalable: Easily extendable with additional functionalities.
 
-The application is hosted on
-`https://aryareactapp.netlify.app/`
+## **Running the Application**
+
+1. **Backend**:
+   
+   To start the node server:
+    ```bash
+    node server.js
 
 
-![image](https://github.com/Aryagoy/React-app/assets/42674731/8dc8d4b8-d243-42d1-acd4-9ff8d0984189)
+3. ***Frontend***:
+
+  Install all necessary packages:
+    ```bash
+    npm install
+
+3. **Run the application**:
+
+    ```bash
+    npm run dev
+The app will run in development mode and can be accessed at http://localhost:3000.
+
+
+### Deployment
+The application is also hosted online and can be accessed at:
+https://aryareactapp.netlify.app/
+
+### Technologies Used
+1. Node.js: Backend server and API
+2. React: Frontend UI for rendering charts
+3. Chart.js: Visualization library for creating charts
+4. Express.js: Framework for building the backend API
+5. Axios: HTTP client for API calls
+
