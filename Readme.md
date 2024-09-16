@@ -25,24 +25,29 @@ http://localhost:3000/
 
 ## **Running the Application**
 
-1. **Backend**:
-   
-   To start the node server:
-    ```bash
-    node server.js
+### 1. **Backend**:
 
+To start the Node.js server, run the following command:
+```bash
+node server.js
+```
 
-3. ***Frontend***:
+### 2. **Frontend**:
 
-  Install all necessary packages:
-    ```bash
-    npm install
+To install all necessary packages, run:
+```bash
+npm install
+```
 
-3. **Run the application**:
+### 3. **Run the application**:
 
-    ```bash
-    npm run dev
-The app will run in development mode and can be accessed at http://localhost:3000.
+To start the application in development mode, run:
+```bash
+npm run dev
+```
+
+The app will run in development mode and can be accessed at [http://localhost:3000](http://localhost:3000).
+
 
 
 ### Deployment
